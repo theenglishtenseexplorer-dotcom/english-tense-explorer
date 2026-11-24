@@ -53,7 +53,21 @@ const scenarios={
 ["A long-term goal","You are discussing a personal goal you hope to achieve.","Explain what you have been doing and what you expect to achieve.","Describe your current effort and a future milestone.","What might make you change your plan?","I have been learning a new language for several months. By next year, I hope I will have reached an intermediate level. I will continue practising a little every day.","Present Perfect Continuous describes ongoing effort; Future Perfect expresses a target reached before a future point; will expresses a future commitment."]
 ]};
 let scenarioIndex=-1, currentScenario=null;
-function renderTenseList(time="Present"){const list=$("tenseList");list.innerHTML="";tenses.filter(t=>t.time===time).forEach(t=>{const b=document.createElement("button");b.className="tense-pick";b.textContent=t.name;b.onclick=()=>renderTense(t.name);list.appendChild(b)});renderTense(tenses.find(t=>t.time===time).name)}
+const tenseGuides={
+"Present":["Talk about routines, facts and situations that are generally true.","Show actions and situations happening around now or temporarily.","Connect past events and experiences to the present.","Highlight an activity or duration continuing up to now."],
+"Past":["Talk about completed events and situations in the past.","Set the scene or show an activity in progress at a past moment.","Look back from a past point to something that happened earlier.","Highlight an activity or duration leading up to a past point."],
+"Future":["Talk about predictions, decisions, promises and willingness.","View an activity as in progress at a future time.","Look ahead to something completed before a future deadline.","Highlight how long an activity will have continued by a future point."]
+};
+const aspectNames=["Simple","Continuous","Perfect","Perfect Continuous"];
+function renderTenseList(time="Present"){
+ const list=$("tenseList");list.innerHTML="";
+ const group=tenses.filter(t=>t.time===time);
+ list.innerHTML=group.map((t,i)=>`<button class="tense-pick" data-tense="${t.name}" type="button"><span class="tense-card-top"><small>0${i+1} · ${aspectNames[i].toUpperCase()}</small><span class="tense-card-arrow">↗</span></span><strong>${t.name}</strong><span class="tense-card-summary">${tenseGuides[time][i]}</span><span class="tense-card-link">Explore this form</span></button>`).join("");
+ list.querySelectorAll(".tense-pick").forEach(b=>b.addEventListener("click",()=>renderTense(b.dataset.tense)));
+ $("tenseDetail").classList.add("hidden");
+ $("tenseDetail").innerHTML="";
+ $("tenseDetail").setAttribute("aria-hidden","true");
+}
 const referenceExtras=[
 {category:"Auxiliary verbs",name:"Be, do and have",form:"BE: am/is/are, was/were · DO: do/does, did · HAVE: have/has, had",negative:"Place not after the auxiliary: is not working; did not work; has not worked.",question:"Move the first auxiliary before the subject: Are you working? Have they finished?",example:"She does not teach on Fridays. / They have finished.",note:"Auxiliaries help form questions, negatives, continuous and perfect structures, and the passive voice.",check:"Which sentence uses do-support correctly?",options:["Does she works here?","Does she work here?","Is she work here?"],correct:1,why:"After does, the main verb stays in its base form: work."},
 {category:"Sentence patterns",name:"Statements, negatives and questions",form:"Statement: Subject + verb phrase · Negative: Subject + auxiliary + not + verb · Question: Auxiliary + subject + verb?",negative:"If there is no auxiliary, use do/does/did for most Present Simple and Past Simple negatives.",question:"Wh-question: question word + auxiliary + subject + main verb?",example:"You work here. / You do not work here. / Do you work here?",note:"Word order changes according to sentence type. Keep the main verb form appropriate to its auxiliary.",check:"Choose the correctly formed question.",options:["Where you do work?","Where do you work?","Where does you work?"],correct:1,why:"Wh-word + do + subject + base verb is the standard pattern."},
@@ -99,8 +113,21 @@ const referenceChecks={
 if($("referenceFilters")) document.querySelectorAll(".ref-filter").forEach(b=>b.onclick=()=>{activeReferenceFilter=b.dataset.filter;document.querySelectorAll(".ref-filter").forEach(x=>x.classList.toggle("active",x===b));renderReference()});
 if ($("referenceSearch")) $("referenceSearch").addEventListener("input",renderReference);
 
-function renderTense(name){const t=tenses.find(x=>x.name===name);document.querySelectorAll(".tense-pick").forEach(b=>b.classList.toggle("active",b.textContent===name));$("tenseDetail").innerHTML=`<span class="pill">${t.time.toUpperCase()} · TENSE FORM</span><h3>${t.name}</h3><p>${t.meaning}</p><h4>Affirmative structure</h4><div class="formula">${t.form}</div><h4>Negative</h4><p>${t.negative}</p><h4>Question</h4><p>${t.question}</p><div class="example"><strong>Example:</strong> ${t.example}</div><h4>Teaching insight</h4><p>${t.insight}</p><p class="note">${t.extra}</p>`}
+function renderTense(name){
+ const t=tenses.find(x=>x.name===name);if(!t)return;
+ document.querySelectorAll(".tense-pick").forEach(b=>b.classList.toggle("active",b.dataset.tense===name));
+ const panel=$("tenseDetail");panel.classList.remove("hidden");panel.setAttribute("aria-hidden","false");
+ panel.innerHTML=`<div class="tense-detail-top"><button type="button" class="back-to-forms" id="backToForms">← All ${t.time.toLowerCase()} forms</button><span class="pill">${t.time.toUpperCase()} · ${t.name.split(" ").slice(1).join(" ").toUpperCase()}</span></div>
+ <h3>${t.name}</h3><p class="tense-meaning">${t.meaning}</p>
+ <div class="tense-structure-highlight"><span>THE BASIC STRUCTURE</span><strong>${t.form}</strong></div>
+ <div class="tense-example-highlight"><span>IN CONTEXT</span><p>${t.example}</p></div>
+ <details class="tense-more"><summary>Build negatives and questions</summary><div class="tense-more-content"><div><b>Negative</b><p>${t.negative}</p></div><div><b>Question</b><p>${t.question}</p></div></div></details>
+ <details class="tense-more"><summary>Understand the choice more deeply</summary><div class="tense-more-content"><div><b>Why speakers use it</b><p>${t.insight}</p></div><div class="tense-note">${t.extra}</div></div></details>`;
+ panel.querySelector("#backToForms").addEventListener("click",()=>{panel.classList.add("hidden");panel.setAttribute("aria-hidden","true");document.querySelectorAll(".tense-pick").forEach(b=>b.classList.remove("active"));});
+ panel.scrollIntoView({behavior:"smooth",block:"nearest"});
+}
 if ($("timeTabs")) document.querySelectorAll("[data-time]").forEach(b=>b.addEventListener("click",()=>{document.querySelectorAll("[data-time]").forEach(x=>x.classList.toggle("active",x===b));renderTenseList(b.dataset.time)}));
+if ($("tenseList")) renderTenseList("Present");
 if ($("compareGrid")) {
  $("compareGrid").innerHTML=comparisons.map((c,i)=>`<button class="compare-card compare-button" data-comparison="${i}"><span class="ref-label">COMPARISON ${String(i+1).padStart(2,"0")}</span><h3>${c[0]}</h3><p>${c[1]}</p><p>${c[2]}</p><span class="compare-open">Open comparison <b>→</b></span></button>`).join("");
  document.querySelectorAll(".compare-button").forEach(b=>b.onclick=()=>{const c=comparisons[Number(b.dataset.comparison)];const panel=$("comparisonDetail");panel.classList.remove("hidden");panel.innerHTML=`<div class="detail-top"><span class="pill">LET'S COMPARE</span><button class="close-detail" aria-label="Close comparison">×</button></div><h3>${c[0]}</h3><div class="compare-columns"><div><span class="ref-label">FORM A</span><p>${c[1]}</p></div><div><span class="ref-label">FORM B</span><p>${c[2]}</p></div></div><div class="page-note"><strong>What changes?</strong><p>${c[3]}</p></div><div class="mini-check"><strong>Think it through</strong><p>Which form would you choose if you wanted to emphasize ${c[3].toLowerCase()}</p><button class="btn secondary" id="showCompareHint">Show the key idea</button><p class="hidden" id="compareHint">${c[3]}</p></div>`;panel.scrollIntoView({behavior:"smooth",block:"start"});panel.querySelector(".close-detail").onclick=()=>panel.classList.add("hidden");panel.querySelector("#showCompareHint").onclick=()=>{panel.querySelector("#compareHint").classList.toggle("hidden")};});

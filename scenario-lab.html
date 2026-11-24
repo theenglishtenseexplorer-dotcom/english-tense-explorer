@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="A free public English grammar resource for understanding tense, aspect, structure and meaning.">
+<title>Scenario Lab | The English Tense Explorer</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="topbar"><div class="wrap nav">
+<a class="brand" href="index.html">THE <span>ENGLISH</span> TENSE EXPLORER</a>
+<nav class="navlinks" aria-label="Main navigation"><a href="index.html">Home</a><a href="explore.html">Explore</a><a href="grammar-reference.html">Grammar Reference</a><a href="relationships.html">Tense Relationships</a><a href="scenario-lab.html" aria-current="page">Scenario Lab</a><a href="practice.html">Practice</a></nav>
+</div></header>
+<main class="page-main"><section class="page-intro"><div class="wrap"><div class="page-kicker">COMMUNICATIVE PRACTICE</div><h1>Scenario Lab</h1><p>Respond to realistic situations. More than one answer may be appropriate; focus on communicating the intended message clearly.</p></div></section><section class="section" id="scenario"><div class="wrap"><div class="section-head"><span class="pill">COMMUNICATIVE PRACTICE</span><h2>Scenario Lab</h2><p>Respond to a realistic situation. More than one answer may be appropriate; focus on communicating the intended message clearly.</p></div><div class="scenario-controls"><label class="small-muted" for="category">Situation</label><select id="category"><option>Workplace</option><option>Everyday life</option><option>Education</option><option>Travel</option><option>Personal experiences</option></select><label class="small-muted" for="mode">Mode</label><select id="mode"><option>Speaking</option><option>Writing</option></select><button class="btn secondary" id="newScenario">New challenge</button></div><div class="scenario-box"><span class="pill" id="scenarioCount">CHALLENGE</span><h3 id="scenarioTitle"></h3><p id="scenarioContext"></p><p><strong>Your communication goal:</strong> <span id="scenarioGoal"></span></p><p id="scenarioTask"></p><div class="field"><label for="response">Your response</label><textarea id="response" placeholder="Write your response here. If you are practising speaking, say your answer aloud first, then note your key ideas."></textarea><div class="small-muted"><span id="wordCount">0</span> words</div></div><div class="scenario-controls"><button class="btn" id="showModel">Show model response</button><button class="btn secondary" id="clearResponse">Clear response</button></div><div class="model hidden" id="modelBox"></div><p><strong>Follow-up question:</strong> <span id="followup"></span></p><h4>Self-assessment</h4><div class="checklist"><label><input type="checkbox"> Meaning: Did I communicate what I intended?</label><label><input type="checkbox"> Tense choice: Did my tense choices fit the time and viewpoint?</label><label><input type="checkbox"> Grammar: Did I form the verbs accurately?</label><label><input type="checkbox"> Naturalness: Does my response sound appropriate in this situation?</label></div><p class="note">Your responses are not sent for automatic correction or saved to an account in this first version. Use the checklist to reflect on your own communication.</p></div></div></section></main>
+<footer class="footer"><div class="wrap"><span><strong>The English Tense Explorer</strong> · Learn the meaning. Use the language.</span><span>A free public learning resource for English learners.</span></div></footer>
+<script src="js/app.js"></script>
+</body></html>

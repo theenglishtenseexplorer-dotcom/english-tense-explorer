@@ -88,3 +88,31 @@
 .ref-check-submit{margin-top:3px}
 @media(max-width:720px){.verb-tool-grid,.verb-reference-lower{grid-template-columns:1fr}.verb-explorer{padding:14px}.pattern-line{align-items:flex-start;flex-direction:column;gap:4px}.pattern-line span{text-align:left}}
 .irregular-verb-reference{margin-top:20px;border-top:1px solid var(--line);padding-top:20px}.irregular-heading{display:flex;justify-content:space-between;align-items:end;gap:14px;flex-wrap:wrap}.irregular-heading h3{margin:0;color:var(--navy)}.irregular-heading p{margin:4px 0 0}.irregular-heading input{min-width:220px;max-width:320px;padding:10px 12px;border:1px solid #d5deed;border-radius:9px;font:inherit}.irregular-table-wrap{max-height:300px;overflow:auto;margin-top:12px;border:1px solid var(--line);border-radius:10px}.irregular-table{width:100%;border-collapse:collapse;background:#fff}.irregular-table th,.irregular-table td{padding:10px 13px;text-align:left;border-bottom:1px solid #edf0f5}.irregular-table th{position:sticky;top:0;background:#f5f8ff;color:#53617a;font-size:.78rem;text-transform:uppercase;letter-spacing:.04em}.irregular-table td{color:#30394b}.irregular-table tr:last-child td{border-bottom:0}
+
+/* Verb System: colorful discovery-led learning */
+.verb-intro{background:linear-gradient(115deg,#f1f6ff 0%,#f7f4ff 48%,#fff 100%)}
+.verb-intro h1 span{color:#6489e8}
+.verb-intro-tags{display:flex;gap:9px;flex-wrap:wrap;margin-top:22px}
+.verb-intro-tags span{padding:6px 12px;border-radius:999px;background:#ffffffc9;border:1px solid #e0e8f8;color:#52678e;font-size:.78rem;font-weight:750}
+.verb-playground{padding:25px;background:linear-gradient(135deg,#f4f8ff,#fff 60%,#f7f4ff)}
+.verb-selector,.irregular-search{display:grid;gap:7px;max-width:330px}.verb-selector label,.irregular-search label{font-weight:800;color:var(--navy)}
+.verb-selector select,.irregular-search input{padding:12px 14px;border:1px solid #d5e0f4;border-radius:11px;background:#fff;color:var(--ink)}
+.verb-forms{display:grid;grid-template-columns:repeat(4,1fr);gap:11px;margin:22px 0 16px}
+.verb-form-chip{padding:17px 13px;border-radius:14px;background:#fff;border:1px solid #e2e9f6;display:grid;gap:5px;box-shadow:0 6px 18px #344c7b0c}
+.verb-form-chip:nth-child(2){background:linear-gradient(145deg,#fff,#f2f5ff)}.verb-form-chip:nth-child(3){background:linear-gradient(145deg,#fff,#f5f0ff)}.verb-form-chip:nth-child(4){background:linear-gradient(145deg,#fff,#eff9f5)}
+.verb-form-chip small,.verb-use small{font-size:.68rem;letter-spacing:.08em;color:#7c8ba8;font-weight:850}.verb-form-chip strong{font-size:1.35rem;color:#2d3d59}
+.verb-uses{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.verb-use{padding:14px;border-radius:12px;background:#ffffffc9;border:1px solid #e7edf7}.verb-use p{margin:6px 0 0;color:#4d5b72;font-size:.9rem}
+.verb-topic-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.verb-topic{border:1px solid #e2e8f2;border-radius:17px;padding:21px;background:#fff;position:relative;overflow:hidden;box-shadow:var(--shadow)}
+.verb-topic:after{content:"";position:absolute;width:100px;height:100px;border-radius:50%;right:-43px;top:-43px;background:#ffffff88}
+.topic-blue{background:linear-gradient(145deg,#eef5ff,#fff 75%)}.topic-lavender{background:linear-gradient(145deg,#f2edff,#fff 75%)}.topic-mint{background:linear-gradient(145deg,#eaf8f2,#fff 75%)}.topic-peach{background:linear-gradient(145deg,#fff1e7,#fff 75%)}.topic-sky{background:linear-gradient(145deg,#eaf7ff,#fff 75%)}.topic-rose{background:linear-gradient(145deg,#fff0f3,#fff 75%)}
+.topic-number{font-size:.72rem;letter-spacing:.12em;font-weight:900;color:#8194bb}.topic-icon{width:42px;height:42px;display:grid;place-items:center;border-radius:13px;background:#ffffffc9;color:#567bd0;font-size:1.35rem;margin:16px 0 10px;box-shadow:0 4px 12px #25395c0c}
+.verb-topic h3{margin:0 0 6px;color:var(--navy)}.verb-topic>p{color:var(--muted);margin:0 0 16px}
+.verb-topic details{border-top:1px solid #dfe6f1;padding-top:12px}.verb-topic summary{cursor:pointer;color:var(--blue-dark);font-size:.88rem;font-weight:850;list-style:none}.verb-topic summary:after{content:"＋";float:right}.verb-topic details[open] summary:after{content:"−"}
+.topic-detail{padding-top:12px;color:#53617a;font-size:.91rem}.topic-detail h4{margin:4px 0 8px;color:#34435e}.topic-detail ul{padding-left:19px}.topic-detail li{margin:7px 0}.topic-callout{padding:12px 14px;border-radius:10px;background:#ffffffb8;border:1px solid #e5eaf4;color:#485a79;margin-top:12px}
+.mini-verb-quiz{padding:13px;background:#ffffffb8;border:1px solid #e3eaf4;border-radius:12px}.quiz-options{display:grid;gap:8px;margin:12px 0}.quiz-options label{cursor:pointer}.mini-feedback{font-weight:750;color:#426aaf;min-height:1.5em;margin:8px 0 0}
+.irregular-tool{padding:24px;background:linear-gradient(115deg,#f7f9ff,#fff 70%,#f5f1ff)}.irregular-result{margin:20px 0 12px;min-height:70px}.irregular-word{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.irregular-word strong{padding:11px 14px;border-radius:10px;background:#fff;border:1px solid #e1e8f4;color:#34445f}.irregular-word span{color:#91a3c7;font-weight:900}
+.irregular-suggestions{display:flex;gap:8px;flex-wrap:wrap}.irregular-suggestions button{border:1px solid #dce5f4;background:#fff;border-radius:999px;padding:7px 12px;color:#52678e;font-weight:750;cursor:pointer}.irregular-suggestions button:hover{border-color:#9eb5f0;background:#f2f6ff}
+@media(max-width:850px){.verb-topic-grid{grid-template-columns:repeat(2,1fr)}.verb-forms,.verb-uses{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.verb-topic-grid{grid-template-columns:1fr}.verb-forms,.verb-uses{grid-template-columns:repeat(2,1fr)}.verb-form-chip strong{font-size:1.15rem}.irregular-word{gap:6px}.irregular-word strong{padding:9px 10px}}
